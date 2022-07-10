@@ -1,9 +1,17 @@
 import React from "react";
-import {useSelector} from 'react-redux'
+import { useEffect } from "react";
+import {useSelector, useDispatch} from 'react-redux'
+import { fetchPrompts } from "../actions/prompts";
  
 
 function Prompts() {
   const prompts = useSelector(state => state.prompts)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchPrompts())
+  }, [])
+
   return (  
     <div>
     <h1>Hello Journal Prompts!</h1>
