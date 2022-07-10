@@ -1,8 +1,40 @@
-export const SET_PROMPT = 'SET_PROMPT'
+import { getPromptsData } from "../apis/promptsApi"
 
-export const setPrompt = (prompt) => {
+export const SET_PROMPTS = 'SET_PROMPT'
+export const SET_PROMPTS_PENDING = 'SET_PROMPTS_PENDING'
+export const SET_ERROR = 'SET_ERROR'
+
+
+export function fetchPrompts () {
+  return (dispatch) => {
+    dispatch(setPromptsPending())
+    return getPromptsData()
+      .then(prompts => {
+        dispatch(setPrompts(prompts))
+        return null
+      })
+      .catch(err => {
+        dispatch(setError(err.message))
+      })
+  }
+}
+
+export function setPromptsPending () {
   return {
-    type: SET_PROMPT,
+    type: SET_PROMPTS_PENDING
+  }
+}
+
+export const setPrompts = (prompt) => {
+  return {
+    type: SET_PROMPTS,
     payload: prompt,
+  }
+}
+
+export function setError(errMessage){
+  return{
+    type:SET_ERROR,
+    errMessage
   }
 }
