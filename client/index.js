@@ -8,6 +8,7 @@ import reducers from './reducers'
 import App from './components/App'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+//legcy create store has been replaced by configure store - note to replace later
 const store = legacy_createStore(
   reducers,
   composeEnhancers(applyMiddleware(thunk))
