@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import {useSelector, useDispatch} from 'react-redux'
 import { fetchPrompts } from "../actions/prompts";
+import ErrorMessage from "./ErrorMessage";
  
 
 function Prompts() {
@@ -13,7 +14,7 @@ function Prompts() {
 
   return (  
     <div className="prompts-container">
-    {/* insert error message component here */}
+    <ErrorMessage />
     <h1>Hello Journal Prompts!</h1>
     {/* insert loading indicator here */}
     <ul>
