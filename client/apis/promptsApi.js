@@ -18,7 +18,7 @@ export function addNewPrompt(newPrompt){
   .post(promptApi)
   .send(newPrompt)
   .then((res) => {
-    console.log('api' , res.body) 
+    return res.body 
   })
   .catch((err) => {
     console.error(err)
