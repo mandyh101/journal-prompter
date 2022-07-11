@@ -9,6 +9,7 @@ export function fetchPrompts () {
   return (dispatch) => {
     dispatch(setPromptsPending())
     return getPromptsData()
+    
       .then(prompts => {
         dispatch(setPrompts(prompts))
         return null
