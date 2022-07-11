@@ -12,6 +12,7 @@ function AddPrompt () {
   function handleSubmit(e){
     e.preventDefault()
     console.log(newPrompt)
+    setNewPrompt('')
     //once action is created, replace line 14 with dispatch(addPrompt(newPrompt)) nd then setNewPrompt back to empty string
   }
 
