@@ -14,21 +14,18 @@ function Prompts() {
   useEffect(() => {
     setTimeout(() => {
       dispatch(fetchPrompts())
-    }, 500)
+    }, 50)
     
   }, [])
 
   return (  
-    <div className="prompts-container">
+    <div className={styles.Prompts}>
     <ErrorMessage />
     <h1>Hello Journal Prompts!</h1>
     <Pending />
     <ul>
       {prompts.map((prompt) => (
-        
         <li key={prompt.id}>{prompt.prompt}</li>
-       
-        
       ))}
     </ul>
     </div>
