@@ -1,5 +1,5 @@
 //import action creator from actions
-import { ADD_PROMPT, SET_PROMPTS } from '../actions/prompts'
+import { ADD_PROMPT, SET_PROMPTS , DEL_PROMPT} from '../actions/prompts'
 
 const initialPromptState = []
 
@@ -12,6 +12,8 @@ const promptsReducer = (state = initialPromptState, action) => {
       return payload
     case ADD_PROMPT:
       return[...state, payload] //add new prompt to state array
+    case DEL_PROMPT:
+      return state.filter((prompt) => prompt.id !== payload)
     default:
       return state
   }

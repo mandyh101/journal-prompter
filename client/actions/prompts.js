@@ -4,7 +4,9 @@ export const SET_PROMPTS = 'SET_PROMPT'
 export const SET_PROMPTS_PENDING = 'SET_PROMPTS_PENDING'
 export const SET_ERROR = 'SET_ERROR'
 export const ADD_PROMPT = 'ADD_PROMPT'
-export const POST_PROMPT = 'POST_PROMPT'
+// export const POST_PROMPT = 'POST_PROMPT'
+export const DEL_PROMPT = 'DEL_PROMPT'
+
 
 
 export function fetchPrompts () {
@@ -35,6 +37,26 @@ export function savePrompt(newPrompt){
     })
   }
 
+}
+
+// export function removePrompt(promptId){
+//   return (dispatch) => {
+//     return getPromptsData()
+//     .then(() => {
+//       dispatch(deletePrompt(promptId))
+//     })
+//     .catch(err => {
+//       dispatch(setError(err.message))
+//     })
+//   }
+// }
+
+
+export const deletePrompt = (promptId) => {
+  return {
+    type: DEL_PROMPT,
+    payload:promptId,
+  }
 }
 
 export function addPrompt(newPrompt){
