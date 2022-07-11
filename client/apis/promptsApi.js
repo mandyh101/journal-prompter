@@ -12,3 +12,16 @@ export function getPromptsData() {
       console.error(err)
     })
 }
+
+export function addNewPrompt(newPrompt){
+  return request
+  .post(promptApi)
+  .send(newPrompt)
+  .then((res) => {
+    console.log('api' , res.body) 
+  })
+  .catch((err) => {
+    console.error(err)
+  }) 
+  
+}

@@ -1,4 +1,4 @@
-import { getPromptsData } from "../apis/promptsApi"
+import { addNewPrompt, getPromptsData } from "../apis/promptsApi"
 
 export const SET_PROMPTS = 'SET_PROMPT'
 export const SET_PROMPTS_PENDING = 'SET_PROMPTS_PENDING'
@@ -6,11 +6,16 @@ export const SET_ERROR = 'SET_ERROR'
 export const ADD_PROMPT = 'ADD_PROMPT'
 
 export const addPrompt = (newPrompt) => {
-  return {
-    type: newPrompt
+  return (dispatch) => {
+    dispatch(addNewPrompt(newPrompt))
+    
+  }
+  // return {
+  //   type: ADD_PROMPT,
+  //   payload: newPrompt
     //next step is to update payload to include category
   }
-}
+
 
 export function fetchPrompts () {
   return (dispatch) => {
