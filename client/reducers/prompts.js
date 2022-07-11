@@ -1,14 +1,6 @@
 //import action creator from actions
 import { ADD_PROMPT, SET_PROMPTS } from '../actions/prompts'
 
-// const initialPromptState = [
-//   {
-//     id: 1,
-//     prompt: ' Write a stream-of-consciousness with no clear goal.',
-//     category: 'Mindfulness',
-//   },
-// ]
-
 const initialPromptState = []
 
 
