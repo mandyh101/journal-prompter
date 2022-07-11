@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {useSelector, useDispatch} from 'react-redux'
-import { fetchPrompts } from "../actions/prompts";
+import { fetchPrompts , deletePrompt } from "../actions/prompts";
 
 import ErrorMessage from "./ErrorMessage";
 import Pending from "./Pending";
@@ -18,6 +18,13 @@ function Prompts() {
     
   }, [])
 
+  //TODO build deletePrompt in actions
+  function handleClick(e){
+    const promptId = e.target.value
+    console.log(promptId)
+    dispatch(deletePrompt(promptId))
+  }
+
   return (  
     <div className={styles.Prompts}>
     <ErrorMessage />
@@ -25,7 +32,11 @@ function Prompts() {
     <Pending />
     <ul>
       {prompts.map((prompt) => (
-        <li key={prompt.id}>{prompt.prompt}</li>
+        <li key={prompt.id}>{prompt.prompt} 
+        <div>
+          <button onClick={handleClick} value={prompt.id}>Delete</button>
+        </div>
+        </li>
       ))}
     </ul>
     </div>
