@@ -9,8 +9,8 @@ function App () {
         <h1>My Collection</h1>
       </header>
       <section className="main">
-        <Prompts />
         <AddPrompt />
+        <Prompts />
       </section>
     </>
   )
