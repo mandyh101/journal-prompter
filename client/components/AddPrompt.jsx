@@ -19,7 +19,8 @@ function AddPrompt () {
   function handleChange(e){
     setNewPrompt(e.target.value)
   }
-
+  
+  // next step is to add another input for category
   return ( 
     <form onSubmit={handleSubmit}>
       <label htmlFor="promptInput">Add a new journl prompt!</label>
