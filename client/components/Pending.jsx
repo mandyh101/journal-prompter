@@ -10,7 +10,7 @@ function Pending() {
   }
 
   return pending 
-  ? <div> <img style={style} src='/images/escaping_ball.gif'/></div>
+  ? <div> <img style={style} src='/images/escaping_ball.gif' alt="animated loading gif"/></div>
   : null
 
   }

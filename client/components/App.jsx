@@ -1,4 +1,5 @@
 import React from 'react'
+import AddPrompt from './AddPrompt'
 import Prompts from './Prompts'
 
 function App () {
@@ -9,6 +10,7 @@ function App () {
       </header>
       <section className="main">
         <Prompts />
+        <AddPrompt />
       </section>
     </>
   )
