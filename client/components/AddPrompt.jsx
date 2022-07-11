@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { savePrompt } from "../actions/prompts";
+import styles from "./Addprompt.module.css"
+
 
 
 const initialForm = {
@@ -12,7 +14,7 @@ const initialForm = {
 function AddPrompt () {
 
   //create local state to control form input
-  const [newPrompt, setNewPrompt] = useState(initialForm) //?does this need to be an empty object to capture both the prompt and teh category?
+  const [newPrompt, setNewPrompt] = useState(initialForm) 
 
   const dispatch = useDispatch()
   // const prompts = useSelector(state => state.prompts)
@@ -34,14 +36,13 @@ function AddPrompt () {
     setNewPrompt({
       // copy the rest of the fields
       ...newPrompt,
-      // overwrite just the one we care about
+      // overwrite just the one getting input
       [evt.target.name]: evt.target.value,
     })
   }
 
-  // next step is to add another input for category
   return ( 
-    <form onSubmit={handleSubmit}>
+    <form className={styles.Addprompt} onSubmit={handleSubmit}>
       <label htmlFor="promptInput">Add a new journal prompt!</label>
       <input id="promptInput" type="text" name="prompt" value={newPrompt.prompt} onChange={handleChange}></input>
       <label htmlFor="category">Add a new prompt category</label>
