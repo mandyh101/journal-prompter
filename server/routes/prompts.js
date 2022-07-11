@@ -14,4 +14,17 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  const { prompt, category} = req.body
+  db.addPrompt({prompt, category})
+    .then((newPrompt) => {
+      console.log(newPrompt)
+      res.json(newPrompt)
+      return null
+    })
+    .catch((err) => {
+      console.error(err.message)
+      res.status(500).send('Server error')
+    })
+})
 module.exports = router
