@@ -18,7 +18,6 @@ router.post('/', (req, res) => {
   const { prompt, category} = req.body
   db.addPrompt({prompt, category})
     .then((newPrompt) => {
-      console.log(newPrompt)
       res.json(newPrompt)
       return null
     })
@@ -28,23 +27,22 @@ router.post('/', (req, res) => {
     })
 })
 
-//router.delete('/', (req,res) => {
-  // const id = req.body.id
-  //call the db func that deletes(id)
-  //.then(deletedPrompt)
-// })
+router.delete('/:id', (req, res)=> {
+  const promptId = req.params.id
+  console.log(promptId)
+  db.delPrompt(promptId) //id is sent in body from client
+  .then(() => {
+    res.sendStatus(200)
+  })
+  .catch((err) => {
+    console.error(err.message)
+    res.status(500).send('Server error')
+  })
+})
+
 module.exports = router
 
 
 
 
-// router.delete('/', (req, res) => {
-//   const id = req.body.id
-//   db.deleteCoffee(id)
-//     .then(() => {
-//       res.sendStatus(200)
-//     })
-//     .catch((err) => {
-//       res.status(500).send(err.message)
-//     })
-// })
+
