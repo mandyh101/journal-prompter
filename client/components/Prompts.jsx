@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {useSelector, useDispatch} from 'react-redux'
-import { fetchPrompts , deletePrompt } from "../actions/prompts";
+import { fetchPrompts , removePrompt } from "../actions/prompts";
 
 import ErrorMessage from "./ErrorMessage";
 import Pending from "./Pending";
@@ -20,7 +20,7 @@ function Prompts() {
 
   function handleClick(id){
     console.log(id)
-    dispatch(deletePrompt(id))
+    dispatch(removePrompt(id))
   }
 
   return (  
