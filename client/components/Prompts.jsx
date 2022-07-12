@@ -18,11 +18,9 @@ function Prompts() {
     
   }, [])
 
-  //TODO build deletePrompt in actions
-  function handleClick(e){
-    const promptId = e.target.value
-    console.log(promptId)
-    dispatch(deletePrompt(promptId))
+  function handleClick(id){
+    console.log(id)
+    dispatch(deletePrompt(id))
   }
 
   return (  
@@ -34,7 +32,7 @@ function Prompts() {
       {prompts.map((prompt) => (
         <li key={prompt.id}>{prompt.prompt} 
         <div>
-          <button onClick={handleClick} value={prompt.id}>Delete</button>
+          <button onClick={() => handleClick(prompt.id)}>Delete</button>
         </div>
         </li>
       ))}
