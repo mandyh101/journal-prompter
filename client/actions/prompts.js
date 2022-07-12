@@ -1,4 +1,8 @@
-import { addNewPrompt, getPromptsData } from "../apis/promptsApi"
+import {
+  addNewPrompt,
+  getPromptsData,
+  removePromptApi,
+} from '../apis/promptsApi'
 
 export const SET_PROMPTS = 'SET_PROMPT'
 export const SET_PROMPTS_PENDING = 'SET_PROMPTS_PENDING'
@@ -7,62 +11,56 @@ export const ADD_PROMPT = 'ADD_PROMPT'
 // export const POST_PROMPT = 'POST_PROMPT'
 export const DEL_PROMPT = 'DEL_PROMPT'
 
-
-
-export function fetchPrompts () {
+export function fetchPrompts() {
   return (dispatch) => {
     dispatch(setPromptsPending())
     return getPromptsData()
-    
-      .then(prompts => {
+      .then((prompts) => {
         dispatch(setPrompts(prompts))
         return null
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch(setError(err.message))
       })
   }
 }
 
-export function savePrompt(newPrompt){
+export function savePrompt(newPrompt) {
   return (dispatch) => {
-    console.log('new prompt' , newPrompt)
     return addNewPrompt(newPrompt)
-    .then(() => {
-      // dispatch(postPrompt(prompt))
-      dispatch(addPrompt(newPrompt))
-    })
-    .catch(err => {
-      dispatch(setError(err.message))
-    })
+      .then(() => {
+        // dispatch(postPrompt(prompt))
+        dispatch(addPrompt(newPrompt))
+      })
+      .catch((err) => {
+        dispatch(setError(err.message))
+      })
   }
-
 }
 
-// export function removePrompt(promptId){
-//   return (dispatch) => {
-//     return getPromptsData()
-//     .then(() => {
-//       dispatch(deletePrompt(promptId))
-//     })
-//     .catch(err => {
-//       dispatch(setError(err.message))
-//     })
-//   }
-// }
-
+export function removePrompt(promptId) {
+  return (dispatch) => {
+    return removePromptApi(promptId)
+      .then(() => {
+        dispatch(deletePrompt(promptId))
+      })
+      .catch((err) => {
+        dispatch(setError(err.message))
+      })
+  }
+}
 
 export const deletePrompt = (promptId) => {
   return {
     type: DEL_PROMPT,
-    payload:promptId,
+    payload: promptId,
   }
 }
 
-export function addPrompt(newPrompt){
+export function addPrompt(newPrompt) {
   return {
     type: ADD_PROMPT,
-    payload: newPrompt
+    payload: newPrompt,
   }
 }
 
@@ -73,9 +71,9 @@ export function addPrompt(newPrompt){
 //   }
 // }
 
-export function setPromptsPending () {
+export function setPromptsPending() {
   return {
-    type: SET_PROMPTS_PENDING
+    type: SET_PROMPTS_PENDING,
   }
 }
 
@@ -86,9 +84,9 @@ export const setPrompts = (prompt) => {
   }
 }
 
-export function setError(errMessage){
-  return{
-    type:SET_ERROR,
-    errMessage
+export function setError(errMessage) {
+  return {
+    type: SET_ERROR,
+    errMessage,
   }
 }
