@@ -13,15 +13,27 @@ export function getPromptsData() {
     })
 }
 
-export function addNewPrompt(newPrompt){
+export function addNewPrompt(newPrompt) {
   return request
-  .post(promptApi)
-  .send(newPrompt)
-  .then((res) => {
-    return res.body 
-  })
-  .catch((err) => {
-    console.error(err)
-  }) 
-  
+    .post(promptApi)
+    .send(newPrompt)
+    .then((res) => {
+      return res.body
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+}
+
+export function removePromptApi(promptId) {
+  console.log('hit delete route', promptId)
+  return request
+    .delete(promptApi)
+    .send(promptId)
+    .then((response) => {
+      return response.body
+    })
+    .catch((err) => {
+      console.error(err)
+    })
 }
