@@ -1,5 +1,5 @@
 import request from 'superagent'
-const promptApi = '/api/v1/prompts'
+const promptApi = '/api/v1/prompts/'
 
 export function getPromptsData() {
   return request
@@ -28,10 +28,10 @@ export function addNewPrompt(newPrompt) {
 export function removePromptApi(promptId) {
   console.log('hit delete route', promptId)
   return request
-    .delete(promptApi)
-    .send(promptId)
+    .delete(promptApi + promptId)
+    // .send(promptId)
     .then((response) => {
-      return response.body
+      return response
     })
     .catch((err) => {
       console.error(err)
