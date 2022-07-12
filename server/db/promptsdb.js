@@ -9,25 +9,23 @@ function getAllPrompts(db = connection) {
 
 function addPrompt(newPrompt, db = connection) {
   const { prompt, category } = newPrompt //deconstruct the newPrompt obj
-  return (
-    db('prompts')
-      .insert({ prompt, category })
-      // .then(([id]) => {return {id, prompt, category} //shorter way
-      .then((ids) => {
-        return { id: ids[0], prompt, category } //with the array returned from insert , insert an object with the id property = to the id array
-        //.then(ids) => {
-        // return getPrompt(ids[0])}
-      })
-  )
+  return db('prompts')
+    .insert({ prompt, category }) //insert returns an array with the id number of the new item in the array
+    .then(([id]) => {
+      return { id, prompt, category } //then at take the id returned from insert, turn it into an index with square brackets and at that index return an object with the new data
+      //alternative way to write line 15
+      // .then((ids) => {
+      //   return { id: ids[0], prompt, category } //with the array returned from insert , insert an object with the id property = to the id array
+    })
 }
 
-//function delPrompt(promptId, db= dbconnection){
-//   return db('prompts').where('id', promptId).delete()
-// }
-
-// return db('coffee-beans').where('id', coffeeId).delete()
+function delPrompt(promptId, db = connection) {
+  console.log(promptId)
+  return db('prompts').where('id', promptId).del()
+}
 
 module.exports = {
   getAllPrompts,
   addPrompt,
+  delPrompt,
 }
