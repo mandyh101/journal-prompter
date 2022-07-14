@@ -7,6 +7,10 @@ function getAllPrompts(db = connection) {
   return db('prompts').select()
 }
 
+function getPrompt(id, db = connection) {
+  return db('prompts').where({ id }).select().first()
+}
+
 function addPrompt(newPrompt, db = connection) {
   const { prompt, category } = newPrompt //deconstruct the newPrompt obj
   return db('prompts')
@@ -23,13 +27,14 @@ function delPrompt(promptId, db = connection) {
   return db('prompts').where('id', promptId).del()
 }
 
-function updatePrompt(editedPrompt, db = connection) {
+function updatePrompt(prompt, db = connection) {
   return db('prompts')
     .where({ id: prompt.id })
-    .update({ prompt: editedPrompt.prompt, category: editedPrompt.category })
+    .update({ prompt: prompt.prompt, category: prompt.category })
 }
 
 module.exports = {
+  getPrompt,
   getAllPrompts,
   addPrompt,
   delPrompt,
