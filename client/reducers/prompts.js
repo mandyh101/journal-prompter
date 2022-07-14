@@ -26,6 +26,7 @@ const promptsReducer = (state = initialPromptState, action) => {
           // if prompt id matches the prompt id of the payload
           return { ...prompt, ...payload } //return the prompt but overwrite it with any new data in the payload.
         }
+        return prompt
       })
     default:
       return state
