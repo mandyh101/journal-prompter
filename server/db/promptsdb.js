@@ -20,12 +20,18 @@ function addPrompt(newPrompt, db = connection) {
 }
 
 function delPrompt(promptId, db = connection) {
-  console.log(promptId)
   return db('prompts').where('id', promptId).del()
+}
+
+function updatePrompt(editedPrompt, db = connection) {
+  return db('prompts')
+    .where({ id: prompt.id })
+    .update({ prompt: editedPrompt.prompt, category: editedPrompt.category })
 }
 
 module.exports = {
   getAllPrompts,
   addPrompt,
   delPrompt,
+  updatePrompt,
 }
