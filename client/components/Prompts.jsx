@@ -22,6 +22,10 @@ function Prompts() {
     dispatch(removePrompt(id))
   }
 
+  function updatePrompt(prompt){
+    dispatch(updatePrompt(prompt))
+  }
+
   return (  
     <div className={styles.Prompts}>
     <ErrorMessage />
@@ -34,9 +38,9 @@ function Prompts() {
           <div className="category">
             {prompt.category}
           </div>
-          <div>
+          {/* this button needs to change to a link and take user to an edit page */}
+            <button onClick={() => updatePrompt(prompt)}>Update</button> 
             <button onClick={() => deletePrompt(prompt.id)}>Delete</button>
-          </div>
         </li>
       ))}
     </ul>
