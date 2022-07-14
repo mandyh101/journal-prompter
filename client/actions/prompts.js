@@ -8,8 +8,15 @@ export const SET_PROMPTS = 'SET_PROMPT'
 export const SET_PROMPTS_PENDING = 'SET_PROMPTS_PENDING'
 export const SET_ERROR = 'SET_ERROR'
 export const ADD_PROMPT = 'ADD_PROMPT'
-// export const POST_PROMPT = 'POST_PROMPT'
 export const DEL_PROMPT = 'DEL_PROMPT'
+export const UPDATE_PROMPT = 'UPDATE_PROMPT'
+
+export function updatePromptCategory(prompt) {
+  return {
+    type: UPDATE_PROMPT,
+    payload: prompt,
+  }
+}
 
 export function fetchPrompts() {
   return (dispatch) => {
