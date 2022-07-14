@@ -18,8 +18,7 @@ function Prompts() {
     
   }, [])
 
-  function handleClick(id){
-    console.log(id)
+  function deletePrompt(id){
     dispatch(removePrompt(id))
   }
 
@@ -30,10 +29,14 @@ function Prompts() {
     <Pending />
     <ul>
       {prompts.map((prompt) => (
-        <li key={prompt.id}>{prompt.prompt} 
-        <div>
-          <button onClick={() => handleClick(prompt.id)}>Delete</button>
-        </div>
+        <li key={prompt.id}>
+          <p>{prompt.prompt}</p>
+          <div className="category">
+            {prompt.category}
+          </div>
+          <div>
+            <button onClick={() => deletePrompt(prompt.id)}>Delete</button>
+          </div>
         </li>
       ))}
     </ul>
