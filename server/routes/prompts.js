@@ -48,7 +48,7 @@ router.patch('/:id', (req, res) => {
   }
   db.updatePrompt(prompt)
     .then(() => {
-      return db.getPrompt(req.body.id) //TODO write db function to get a prompt
+      return db.getPrompt(req.body.id)
     })
     .then((updatedPrompt) => {
       res.json(updatedPrompt)
