@@ -13,9 +13,10 @@ function App () {
         </header>
         <Routes>
           <Route path='/' element={<Prompts />}/>
+          <Route path='/' element={<AddPrompt />}/>
           <Route path='/edit/:id' element={<EditPrompt />}/>
         </Routes>
-        <AddPrompt />
+        
         
       </section>
     </>
