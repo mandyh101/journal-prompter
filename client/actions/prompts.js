@@ -21,12 +21,13 @@ export function updatePrompt(prompt) {
   }
 }
 
-export function editPrompt(prompt) {
+export function editPrompt(prompt, id) {
   return (dispatch) => {
     // dispatch(setPromptsPending())
-    return editPromptApi(prompt)
-      .then((updatedPrompt) => {
-        dispatch(updatePrompt(updatedPrompt))
+    return editPromptApi(prompt, id)
+      .then(() => {
+        console.log('action', prompt)
+        dispatch(updatePrompt(prompt))
         return null
       })
       .catch((err) => {
