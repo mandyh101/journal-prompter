@@ -55,10 +55,11 @@ export function getPromptById(id) {
     })
 }
 
-export function editPromptApi(prompt) {
-  console.log('hit update route', prompt.promptId)
+//api/v1/prompts/edit/:id
+export function editPromptApi(prompt, id) {
+  console.log('hit update route', id)
   return request
-    .patch(promptApi + prompt.promptId)
+    .patch(`${promptApi}/edit/${id}`)
     .send(prompt)
     .then((res) => {
       return res.body
