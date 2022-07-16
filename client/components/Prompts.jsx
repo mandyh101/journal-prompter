@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import {useSelector, useDispatch, useNavigate} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import { useNavigate } from "react-router-dom";
 import { fetchPrompts , removePrompt } from "../actions/prompts";
 
 import ErrorMessage from "./ErrorMessage";
