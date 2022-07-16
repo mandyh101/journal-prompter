@@ -5,21 +5,25 @@ import {fetchPrompt} from '../actions/prompts'
 
 function EditPrompt () {
   
-  const prompt = useSelector((state) => state.prompts)
+  const prompt = useSelector(state => state.prompts)
   const [editPromptInput, setEditPromptInput] = useState({})
   const {id} = useParams()
 
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   dispatch(fetchPrompt(id))
+  useEffect(() => {
+    console.log(id)
+    dispatch(fetchPrompt(id))
+    console.log(prompt)
   //   // setEditPromptInput(prompt)
   //   // console.log(editPromptInput)
   //   //setPromptInput as prompt - sets the default value as the prompt being edited
-  // }, [])
+  }, [])
 
 
   function handleOnChange(e){
+    console.log('tagert', e.target.name)
+    console.log('val', e.target.value)
     setEditPromptInput({
       ...editPromptInput,
       [e.target.name]: e.target.value
@@ -49,7 +53,7 @@ function EditPrompt () {
         onChange={handleOnChange}>
         </input>
       </label>
-      <button type="submit"></button>
+      <button type="submit">Save changes</button>
     </form>
     </>
    );
