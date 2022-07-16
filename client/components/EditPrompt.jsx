@@ -1,11 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {useParams} from 'react-router-dom'
+import {fetchPrompt} from '../actions/prompts'
 
 function EditPrompt () {
   
   const prompt = useSelector((state) => state.prompts)
   const [editPromptInput, setEditPromptInput] = useState({})
+  const {id} = useParams()
+
   const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(fetchPrompt(id))
+  //   // setEditPromptInput(prompt)
+  //   // console.log(editPromptInput)
+  //   //setPromptInput as prompt - sets the default value as the prompt being edited
+  // }, [])
+
 
   function handleOnChange(e){
     setEditPromptInput({
@@ -16,6 +28,7 @@ function EditPrompt () {
   }
 
   return ( 
+    <>
     <form>
       <h3>Edit prompt</h3>
       <label htmlFor="prompt"> Edit journal prompt:
@@ -38,6 +51,7 @@ function EditPrompt () {
       </label>
       <button type="submit"></button>
     </form>
+    </>
    );
 }
 
