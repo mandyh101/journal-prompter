@@ -1,4 +1,4 @@
-import request from 'superagent'
+import request, { get } from 'superagent'
 const promptApi = '/api/v1/prompts/'
 
 export function getPromptsData() {
@@ -40,7 +40,18 @@ export function removePromptApi(promptId) {
   )
 }
 
-export function updatePrompt(prompt) {
+export function getPromptById(id) {
+  return request
+    .get(promptApi + id)
+    .then((res) => {
+      return res.json
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+}
+
+export function editPromptApi(prompt) {
   console.log('hit update route', prompt.promptId)
   return request
     .patch(promptApi + prompt.promptId)
