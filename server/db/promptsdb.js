@@ -27,10 +27,10 @@ function delPrompt(promptId, db = connection) {
   return db('prompts').where('id', promptId).del()
 }
 
-function updatePrompt(prompt, db = connection) {
+function updatePrompt(prompt, id, db = connection) {
   return db('prompts')
-    .where({ id: prompt.id })
-    .update({ prompt: prompt.prompt, category: prompt.category })
+    .update({ id: id, prompt: prompt.prompt, category: prompt.category })
+    .where({ id })
 }
 
 module.exports = {
