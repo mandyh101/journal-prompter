@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { legacy_createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+import { BrowserRouter } from 'react-router-dom'
 
 import reducers from './reducers'
 import App from './components/App'
@@ -17,7 +18,9 @@ const store = legacy_createStore(
 document.addEventListener('DOMContentLoaded', () => {
   render(
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>,
     document.getElementById('app')
   )
