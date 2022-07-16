@@ -37,8 +37,10 @@ export function editPrompt(prompt) {
 
 export function fetchPrompt(id) {
   return (dispatch) => {
+    console.log('action', id)
     return getPromptById(id)
       .then((prompt) => {
+        console.log('action', prompt)
         dispatch(setPrompt(prompt))
         return null
       })

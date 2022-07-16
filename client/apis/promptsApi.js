@@ -44,7 +44,11 @@ export function getPromptById(id) {
   return request
     .get(promptApi + id)
     .then((res) => {
-      return res.json
+      const prompt = {
+        prompt: res.body.prompt,
+        category: res.body.category,
+      }
+      return prompt
     })
     .catch((err) => {
       console.error(err)
