@@ -2,6 +2,7 @@
 import {
   ADD_PROMPT,
   SET_PROMPTS,
+  SET_PROMPT,
   DEL_PROMPT,
   UPDATE_PROMPT,
 } from '../actions/prompts'
@@ -13,6 +14,8 @@ const promptsReducer = (state = initialPromptState, action) => {
 
   switch (type) {
     case SET_PROMPTS:
+      return payload
+    case SET_PROMPT:
       return payload
     case ADD_PROMPT:
       return [...state, payload] //add new prompt to state array
