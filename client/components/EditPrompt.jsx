@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {useParams} from 'react-router-dom'
-import {fetchPrompt} from '../actions/prompts'
+import {useParams, useNavigate} from 'react-router-dom'
+import {editPrompt, fetchPrompt} from '../actions/prompts'
 
 //TODO
 //Default values are rendering on form
@@ -11,35 +11,41 @@ import {fetchPrompt} from '../actions/prompts'
 
 function EditPrompt () {
   
-  const prompt = useSelector(state => state.prompts)
+  const prompt = useSelector(state => state.prompt)
   const [editPromptInput, setEditPromptInput] = useState({})
-  const {id} = useParams()
+  const {id} = useParams() //gets the id number from the URL
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     console.log(id)
-    dispatch(fetchPrompt(id))
+    dispatch(fetchPrompt(id))//gets the prompt data specific to the one selected to edit
+    setEditPromptInput(prompt) //?I think this is beacause if not everything is edited you don't get blnk info
     console.log(prompt)
-  //   // setEditPromptInput(prompt)
-  //   // console.log(editPromptInput)
-  //   //setPromptInput as prompt - sets the default value as the prompt being edited
   }, [])
 
 
   function handleOnChange(e){
-    console.log('tagert', e.target.name)
+    console.log('target', e.target.name)
     console.log('val', e.target.value)
     setEditPromptInput({
       ...editPromptInput,
       [e.target.name]: e.target.value
     })
-    console.log('edited prompt', editPromptInput)
+    console.log('edited prompt input', editPromptInput)
+  }
+
+  function handleSubmit(e){
+    e.preventDefault()
+    dispatch(editPrompt(editPromptInput, id))
+    //alert('Your update has been saved!')
+    navigate(-1)
   }
 
   return ( 
     <>
-    <form>
+    <form onSubmit={handleSubmit}>
       <h3>Edit prompt</h3>
       <label htmlFor="prompt"> Edit journal prompt:
         <textarea 
