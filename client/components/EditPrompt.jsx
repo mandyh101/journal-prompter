@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {useParams} from 'react-router-dom'
 import {fetchPrompt} from '../actions/prompts'
 
+//TODO
+//Default values are rendering on form
+//Can you get the prompt selected for editing to render on the page instead?
+//Need to make sure that the handlechange is being used to setInput - this might require the useEffect to set the input as defualt to prompt
+//need to add the onSubmit which will dispatch the editPrompt action
+
 function EditPrompt () {
   
   const prompt = useSelector(state => state.prompts)
