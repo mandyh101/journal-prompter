@@ -6,6 +6,7 @@ import { fetchPrompts , removePrompt } from "../actions/prompts";
 import ErrorMessage from "./ErrorMessage";
 //import Pending from "./Pending";
 import styles from "../styles/Prompts.module.scss"
+import AddPrompt from "./AddPrompt";
  
 
 function Prompts() {
@@ -41,6 +42,7 @@ function Prompts() {
         </li>
       ))}
     </ul>
+    <AddPrompt />
     </div>
   );
 }
