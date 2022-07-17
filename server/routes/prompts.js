@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db/promptsdb')
 
+//READ
+
 //GET all prompts /api/v1/prompts
 router.get('/', (req, res) => {
   db.getAllPrompts()
@@ -14,7 +16,22 @@ router.get('/', (req, res) => {
     })
 })
 
-//POST /api/v1/prompts
+//GET a prompt by id /api/v1/prompts/:id
+router.get('/:id', (req, res) => {
+  const id = req.params.id
+  db.getPrompt(id)
+    .then((prompt) => {
+      res.json(prompt)
+    })
+    .catch((err) => {
+      console.error(err.message)
+      res.status(500).send('Server error')
+    })
+})
+
+//CREATE
+
+//POST /api/v1/prompts - need a param for ADD?
 router.post('/', (req, res) => {
   const { prompt, category } = req.body
   db.addPrompt({ prompt, category })
@@ -27,6 +44,8 @@ router.post('/', (req, res) => {
       res.status(500).send('Server error')
     })
 })
+
+//DELETE
 
 //DELETE /api/v1/prompts
 router.delete('/:id', (req, res) => {
@@ -42,18 +61,7 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-//GET a prompt /api/v1/prompts/:id
-router.get('/:id', (req, res) => {
-  const id = req.params.id
-  db.getPrompt(id)
-    .then((prompt) => {
-      res.json(prompt)
-    })
-    .catch((err) => {
-      console.error(err.message)
-      res.status(500).send('Server error')
-    })
-})
+//UPDATE
 
 //PATCH a prompt /api/v1/prompts/edit/:id
 router.patch('/edit/:id', (req, res) => {
@@ -68,6 +76,8 @@ router.patch('/edit/:id', (req, res) => {
       res.status(500).send(err.message)
     })
 })
+
+//TODO test if the below could replace the above?
 // router.patch('/edit/:id', (req, res) => {
 //   let prompt = {
 //     prompt: req.body.prompt,
