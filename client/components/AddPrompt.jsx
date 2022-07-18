@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { savePrompt } from "../actions/prompts";
-import styles from "./Addprompt.module.css"
+import styles from "../styles/Addprompt.module.scss"
 
 
 
