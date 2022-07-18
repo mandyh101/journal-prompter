@@ -21,6 +21,7 @@ function PromptView(props) { //props should be id
       <h2>Get your journal on &#128394;</h2>
       <p>{prompt.prompt}</p>
       <p>{prompt.category}</p>
+      {/* Migrate buttons to edit and delete here */}
     </>
     
    );
