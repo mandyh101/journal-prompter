@@ -43,10 +43,15 @@ function AddPrompt () {
 
   return ( 
     <form className={styles.Addprompt} onSubmit={handleSubmit}>
-      <label htmlFor="promptInput">Add a new journal prompt!</label>
-      <input id="promptInput" type="text" name="prompt" value={newPrompt.prompt} onChange={handleChange}></input>
-      <label htmlFor="category">Add a new prompt category</label>
-      <input id="category" type="text" name="category" value={newPrompt.category} onChange={handleChange}></input>
+      <h2>Add a new journal prompt</h2>
+      <div>
+        <label htmlFor="promptInput">Journal prompt</label>
+        <input id="promptInput" type="text" name="prompt" value={newPrompt.prompt} onChange={handleChange}></input>
+      </div>
+      <div>
+        <label htmlFor="category">Category</label>
+        <input id="category" type="text" name="category" value={newPrompt.category} onChange={handleChange}></input>
+      </div>
       <input type='submit' value='Create' />
     </form>
    );
