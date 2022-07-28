@@ -3,14 +3,17 @@ const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
+//Reads and returns all the prompt data
 function getAllPrompts(db = connection) {
   return db('prompts').select()
 }
 
+//Gets one prompt object by id
 function getPrompt(id, db = connection) {
   return db('prompts').where({ id }).select().first()
 }
 
+//Adds a new prompt object to the database
 function addPrompt(newPrompt, db = connection) {
   const { prompt, category } = newPrompt //deconstruct the newPrompt obj
   return db('prompts')
@@ -23,10 +26,12 @@ function addPrompt(newPrompt, db = connection) {
     })
 }
 
+//Deletes a prompt from the database
 function delPrompt(promptId, db = connection) {
   return db('prompts').where('id', promptId).del()
 }
 
+//Updates a prompt object in the database
 function updatePrompt(prompt, id, db = connection) {
   return db('prompts')
     .update({ id: id, prompt: prompt.prompt, category: prompt.category })

@@ -30,9 +30,9 @@ function Prompts() {
     <ErrorMessage />
     <h1>Hello Journal Prompts!</h1>
     {/* <Pending /> */}
-    <ul>
+    <ul className="promptListContainer" >
       {prompts.map((prompt) => (
-        <li key={prompt.id}>
+        <li className="promptCards" key={prompt.id}>
           <p>{prompt.prompt}</p>
           <div className="category">
             {prompt.category}

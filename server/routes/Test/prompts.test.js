@@ -21,7 +21,7 @@ const testData = [
 ]
 
 describe('GET /api/v1/prompts', () => {
-  test('gets an array of objects contianing prompts data', () => {
+  test('gets an array of objects containing prompts data', () => {
     expect.assertions(3)
     db.getAllPrompts.mockImplementation(() => Promise.resolve(testData))
     return request(server)
